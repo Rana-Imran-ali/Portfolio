@@ -21,6 +21,8 @@ Route::get('/about',     [FrontendController::class, 'about'])->name('about');
 Route::get('/skills',    [FrontendController::class, 'skills'])->name('skills');
 Route::get('/projects',  [FrontendController::class, 'projects'])->name('projects');
 Route::get('/experience',[FrontendController::class, 'experience'])->name('experience');
+Route::get('/posts',     [FrontendController::class, 'posts'])->name('posts');
+Route::get('/posts/{slug}', [FrontendController::class, 'post'])->name('posts.show');
 Route::get('/contact',   [FrontendController::class, 'contact'])->name('contact');
 Route::get('/resume',    [FrontendController::class, 'resume'])->name('resume');
 
@@ -44,6 +46,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('posts',      PostController::class);
     Route::resource('subscribers', SubscriberController::class);
     Route::resource('content',    PageContentController::class);
+    Route::resource('messages',   \App\Http\Controllers\Admin\MessageController::class)->only(['index', 'destroy']);
 });
 
 // ─────────────────────────────────────────────────────────────────────────────

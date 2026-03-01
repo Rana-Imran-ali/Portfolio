@@ -21,6 +21,10 @@
             <h3 class="text-sm font-bold uppercase tracking-widest text-gray-400 mb-2">Subscribers</h3>
             <p class="text-4xl font-bold">{{ $stats['subscribers'] }}</p>
         </div>
+        <div class="p-6 border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="text-sm font-bold uppercase tracking-widest text-gray-400 mb-2">Messages</h3>
+            <p class="text-4xl font-bold">{{ $stats['messages'] }}</p>
+        </div>
     </div>
 
     <div class="mt-16 grid lg:grid-cols-2 gap-10">

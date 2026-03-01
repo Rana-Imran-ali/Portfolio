@@ -19,6 +19,7 @@ class AdminController extends Controller
             'skills' => Skill::count(),
             'posts' => Post::count(),
             'subscribers' => Subscriber::count(),
+            'messages' => \App\Models\Message::count(),
         ];
         return view('admin.dashboard', compact('stats'));
     }

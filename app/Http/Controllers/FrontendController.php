@@ -15,7 +15,10 @@ class FrontendController extends Controller
     public function home()
     {
         $content = PageContent::where('key', 'home_hero')->first();
-        return view('frontend.home', compact('content'));
+        $projects = Project::latest()->take(3)->get();
+        $skills = Skill::all();
+        $posts = Post::latest()->take(3)->get();
+        return view('frontend.home', compact('content', 'projects', 'skills', 'posts'));
     }
 
     public function about()
@@ -40,6 +43,18 @@ class FrontendController extends Controller
     {
         $experiences = Experience::latest()->get();
         return view('frontend.experience', compact('experiences'));
+    }
+
+    public function posts()
+    {
+        $posts = Post::latest()->paginate(9);
+        return view('frontend.posts', compact('posts'));
+    }
+
+    public function post($slug)
+    {
+        $post = Post::where('slug', $slug)->firstOrFail();
+        return view('frontend.post', compact('post'));
     }
 
     public function contact()

@@ -161,8 +161,8 @@
             <h2 class="section-title gradient-text-2 mt-2">Tools I Work With</h2>
         </div>
         <div class="flex flex-wrap justify-center gap-3 fade-up">
-            @foreach(['Laravel','PHP 8.x','MySQL','Vue.js','Alpine.js','Tailwind CSS','REST API','Git','Docker','Linux','Livewire','Composer'] as $tech)
-            <span class="tech-pill text-base px-5 py-2.5" style="font-size:0.8rem;">{{ $tech }}</span>
+            @foreach($skills as $skill)
+            <span class="tech-pill text-base px-5 py-2.5" style="font-size:0.8rem;">{{ $skill->name }}</span>
             @endforeach
         </div>
     </div>
@@ -188,6 +188,103 @@
         </div>
     </div>
 </section>
+
+{{-- ── RECENT PROJECTS ────────────────────────────────────────────── --}}
+@if($projects->count())
+<section class="py-24 px-4 bg-[#050b14]">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex justify-between items-end mb-16 fade-up">
+            <div>
+                <span class="section-label">Portfolio</span>
+                <h2 class="section-title gradient-text mt-2">Recent Work</h2>
+            </div>
+            <a href="{{ route('projects') }}" class="hidden md:inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:text-white" style="color:#00d4ff;">
+                View All Projects
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach($projects as $project)
+                <article class="glass card-hover project-card rounded-2xl overflow-hidden fade-up group">
+                    <div class="relative aspect-video overflow-hidden" style="background:#111827;">
+                        @if($project->image)
+                            <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}" loading="lazy" class="project-img w-full h-full object-cover">
+                        @else
+                            <div class="w-full h-full flex items-center justify-center relative">
+                                <div class="blob blob-cyan" style="width:200px;height:200px;top:0;left:0;opacity:0.2;"></div>
+                                <svg class="w-16 h-16 relative z-10" style="color:#1e293b;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                            </div>
+                        @endif
+                        <div class="project-overlay">
+                            @if($project->link)
+                            <a href="{{ $project->link }}" target="_blank" rel="noopener noreferrer" class="btn-primary text-xs py-2 px-4">Live Demo</a>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="p-7">
+                        <h2 class="text-xl font-bold text-white mb-2">{{ $project->title }}</h2>
+                        <p class="text-sm leading-relaxed mb-5 line-clamp-2" style="color:#64748b;">{{ $project->description }}</p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            @foreach(array_slice(explode(',', $project->tech_stack), 0, 3) as $tech)
+                                <span class="tech-pill">{{ trim($tech) }}</span>
+                            @endforeach
+                            @if(count(explode(',', $project->tech_stack)) > 3) <span class="text-xs text-gray-500">...</span> @endif
+                        </div>
+                    </div>
+                </article>
+            @endforeach
+        </div>
+        <div class="mt-12 text-center md:hidden fade-up" style="animation-delay:0.3s;">
+             <a href="{{ route('projects') }}" class="btn-outline">View All Projects</a>
+        </div>
+    </div>
+</section>
+@endif
+
+{{-- ── RECENT POSTS ───────────────────────────────────────────────── --}}
+@if($posts->count())
+<section class="py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex justify-between items-end mb-16 fade-up">
+            <div>
+                <span class="section-label">Blog</span>
+                <h2 class="section-title gradient-text-2 mt-2">Latest Insights</h2>
+            </div>
+            <a href="{{ route('posts') }}" class="hidden md:inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:text-white" style="color:#00d4ff;">
+                Read All Articles
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach($posts as $post)
+                <article class="glass card-hover rounded-2xl overflow-hidden fade-up flex flex-col h-full group">
+                    <div class="p-7 flex-1 flex flex-col">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="tech-pill text-xs">{{ $post->category ?? 'General' }}</span>
+                            <span class="text-xs text-gray-500">{{ $post->created_at->format('M d, Y') }}</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                            <a href="{{ route('posts.show', $post->slug) }}">
+                                {{ $post->title }}
+                            </a>
+                        </h3>
+                        <p class="text-sm leading-relaxed mb-6 flex-1 text-gray-400 line-clamp-3">
+                            {{ Str::limit(strip_tags($post->content), 120) }}
+                        </p>
+                        <a href="{{ route('posts.show', $post->slug) }}" class="inline-flex items-center gap-2 text-sm font-semibold" style="color:#00d4ff;">
+                            Read More
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </a>
+                    </div>
+                </article>
+            @endforeach
+        </div>
+        <div class="mt-12 text-center md:hidden fade-up" style="animation-delay:0.3s;">
+             <a href="{{ route('posts') }}" class="btn-outline">Read All Articles</a>
+        </div>
+    </div>
+</section>
+@endif
 
 @endsection
 

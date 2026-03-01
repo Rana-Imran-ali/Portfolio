@@ -22,7 +22,11 @@ class ContactController extends Controller
             'message' => 'required|string|max:5000',
         ]);
 
-        // TODO: dispatch a ContactMailJob or Mail::to(admin)->send(new ContactMessage(...))
+        \App\Models\Message::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'message' => $request->message,
+        ]);
 
         return back()->with('success', 'Your message has been sent successfully!');
     }
