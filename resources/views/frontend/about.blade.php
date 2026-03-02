@@ -36,9 +36,9 @@
                     {{-- Quick facts --}}
                     <div class="grid grid-cols-2 gap-4">
                         @foreach([
-                            ['📍','Location','Rawalpindi, Pakistan'],
+                            ['📍','Location','Punjab, Pakistan'],
                             ['💼','Status','Open to Work'],
-                            ['🎓','Education','CS Graduate'],
+                            ['🎓','Education','IT Graduate'],
                             ['🌐','Languages','English, Urdu'],
                         ] as [$icon,$key,$val])
                         <div class="glass p-4 rounded-xl">

@@ -106,7 +106,7 @@
                     {{-- Available badge --}}
                     <div class="mt-4 flex items-center gap-2">
                         <span class="w-2 h-2 rounded-full animate-pulse" style="background:#22c55e;"></span>
-                        <span class="text-xs font-semibold" style="color:#22c55e;">Online & Ready to Work</span>
+                        <span class="text-xs font-semibold" style="color:#22c55e;">Online &amp; Ready to Work</span>
                     </div>
                 </div>
             </div>
