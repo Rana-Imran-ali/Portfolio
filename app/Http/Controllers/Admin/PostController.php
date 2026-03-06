@@ -34,10 +34,10 @@ class PostController extends Controller
         
         $post = Post::create($data);
         
-        // Trigger notification to subscribers
-        $subscribers = \App\Models\Subscriber::all(); // Simplified, normally you'd use chunking or queues
+        // Trigger notification to verified subscribers
+        $subscribers = \App\Models\Subscriber::where('is_verified', true)->get();
         foreach ($subscribers as $subscriber) {
-            \Illuminate\Support\Facades\Mail::to($subscriber->email)->queue(new \App\Mail\NewPostNotification($post));
+            \Illuminate\Support\Facades\Mail::to($subscriber->email)->queue(new \App\Mail\WebsiteUpdatedNotification($post->title, 'Article', route('posts.show', $post->slug)));
         }
         
         return redirect()->route('admin.posts.index')->with('success', 'Post created successfully.');

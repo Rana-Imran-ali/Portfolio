@@ -54,6 +54,13 @@ class ContactController extends Controller
         $verificationUrl = route('subscribe.verify', ['token' => $token]);
         Mail::to($request->email)->queue(new SubscriberVerification($verificationUrl));
 
+        if ($request->wantsJson()) {
+            return response()->json([
+                'status'  => 'success',
+                'message' => 'Thank you! Please check your email to confirm your subscription.'
+            ]);
+        }
+
         return back()->with('success', 'Thank you! Please check your email to confirm your subscription.');
     }
 

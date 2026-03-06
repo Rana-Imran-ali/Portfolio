@@ -62,6 +62,11 @@ class FrontendController extends Controller
         return view('frontend.contact');
     }
 
+    public function subscribeIndex()
+    {
+        return view('frontend.subscribe');
+    }
+
     public function resume()
     {
         $path = storage_path('app/public/resume.pdf');

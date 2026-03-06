@@ -28,7 +28,14 @@ class ProjectController extends Controller
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('projects', 'public');
         }
-        Project::create($data);
+        $project = Project::create($data);
+
+        // Trigger notification to verified subscribers
+        $subscribers = \App\Models\Subscriber::where('is_verified', true)->get();
+        foreach ($subscribers as $subscriber) {
+            \Illuminate\Support\Facades\Mail::to($subscriber->email)->queue(new \App\Mail\WebsiteUpdatedNotification($project->title, 'Project', route('projects')));
+        }
+
         return redirect()->route('admin.projects.index')->with('success', 'Project created successfully.');
     }
 

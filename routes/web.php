@@ -24,6 +24,7 @@ Route::get('/experience',[FrontendController::class, 'experience'])->name('exper
 Route::get('/posts',     [FrontendController::class, 'posts'])->name('posts');
 Route::get('/posts/{slug}', [FrontendController::class, 'post'])->name('posts.show');
 Route::get('/contact',   [FrontendController::class, 'contact'])->name('contact');
+Route::get('/subscribe', [FrontendController::class, 'subscribeIndex'])->name('subscribe.index');
 Route::get('/resume',    [FrontendController::class, 'resume'])->name('resume');
 
 // Contact form & subscription – rate-limited to prevent abuse

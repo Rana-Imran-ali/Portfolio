@@ -75,38 +75,29 @@
                 </div>
             </div>
 
-            {{-- Right — code card --}}
-            <div class="lg:col-span-5 fade-up" style="animation-delay:0.4s;">
-                <div class="glass-strong p-6 rounded-2xl card-hover relative">
-                    {{-- Terminal header --}}
-                    <div class="flex items-center gap-2 mb-5 pb-4" style="border-bottom:1px solid rgba(255,255,255,0.06);">
-                        <span class="w-3 h-3 rounded-full" style="background:#ef4444;"></span>
-                        <span class="w-3 h-3 rounded-full" style="background:#f59e0b;"></span>
-                        <span class="w-3 h-3 rounded-full" style="background:#22c55e;"></span>
-                        <span class="ml-3 text-xs font-mono" style="color:#475569;">imran@portfolio:~$</span>
+            {{-- Right — Profile Picture --}}
+            <div class="lg:col-span-5 fade-up flex justify-center lg:justify-end" style="animation-delay:0.4s;">
+                <div class="relative w-full max-w-sm xl:max-w-md">
+                    {{-- Avatar Base --}}
+                    <div class="relative z-10 glass-strong p-2 rounded-3xl card-hover overflow-hidden aspect-[4/5]" style="border:1px solid rgba(0,212,255,0.2); background: rgba(17, 24, 39, 0.7);">
+                        <img src="{{ asset('images/profile.jpg') }}" alt="Imran Ali" class="absolute inset-0 w-full h-full rounded-2xl object-cover object-top shadow-2xl p-2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="absolute inset-0 m-2 rounded-2xl flex flex-col items-center justify-center text-center p-4 border-2 border-dashed border-cyan-500/30 text-slate-400" style="display: none; background: #050b14;">
+                            <svg class="w-8 h-8 mb-2 text-cyan-400 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                            <span class="text-xs uppercase tracking-wider font-semibold">Missing Image</span>
+                            <span class="text-[10px] mt-1 opacity-70">Save as public/images/profile.jpg</span>
+                        </div>
                     </div>
-                    {{-- Code content --}}
-                    <pre class="font-mono text-sm leading-relaxed" style="color:#e2e8f0;">
-<span style="color:#94a3b8;">// Developer Profile</span>
-<span style="color:#7c3aed;">const</span> <span style="color:#00d4ff;">imran</span> = {
-  name:    <span style="color:#a78bfa;">"Imran Ali"</span>,
-  role:    <span style="color:#a78bfa;">"Full-Stack Developer"</span>,
-  location:<span style="color:#a78bfa;">"Rawalpindi, PK"</span>,
 
-  stack: [
-    <span style="color:#a78bfa;">"Laravel"</span>, <span style="color:#a78bfa;">"PHP"</span>,
-    <span style="color:#a78bfa;">"MySQL"</span>, <span style="color:#a78bfa;">"Vue.js"</span>,
-    <span style="color:#a78bfa;">"Tailwind"</span>, <span style="color:#a78bfa;">"REST API"</span>
-  ],
-
-  available: <span style="color:#22c55e;">true</span>,
-  coffee:    <span style="color:#f59e0b;">Infinity</span> ☕
-};</pre>
-
-                    {{-- Available badge --}}
-                    <div class="mt-4 flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full animate-pulse" style="background:#22c55e;"></span>
-                        <span class="text-xs font-semibold" style="color:#22c55e;">Online &amp; Ready to Work</span>
+                    {{-- Decorative elements --}}
+                    <div class="absolute -z-10 bg-cyan-500/20 blur-3xl rounded-full w-full h-full top-0 left-0"></div>
+                    
+                    {{-- Available badge floating --}}
+                    <div class="absolute -bottom-6 -left-6 md:-left-10 z-20 glass py-3 px-5 rounded-2xl flex items-center gap-3 shadow-xl card-hover border border-white/10" style="backdrop-filter: blur(12px);">
+                        <span class="relative flex h-3 w-3">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                        </span>
+                        <span class="text-sm font-bold text-white tracking-wide">Online &amp; Ready to Work</span>
                     </div>
                 </div>
             </div>
