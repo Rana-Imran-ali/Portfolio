@@ -97,10 +97,7 @@
                         <span class="text-[11px] sm:text-sm font-bold text-white tracking-wide">Available</span>
                     </div>
 
-                    {{-- floating tech badge --}}
-                    <div class="absolute -top-4 -right-2 sm:-top-6 sm:-right-6 z-20 glass p-3 sm:p-4 rounded-full flex flex-col items-center justify-center shadow-xl border border-white/10 h-14 w-14 sm:h-20 sm:w-20 transform transition-all duration-500 hover:scale-110 group-hover:-translate-y-1 group-hover:translate-x-1" style="backdrop-filter: blur(12px); background: rgba(17, 24, 39, 0.85);">
-                        <svg class="w-5 h-5 sm:w-8 sm:h-8 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-                    </div>
+
                 </div>
             </div>
 
