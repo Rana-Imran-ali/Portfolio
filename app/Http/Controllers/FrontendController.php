@@ -15,56 +15,27 @@ class FrontendController extends Controller
     public function home()
     {
         $content = PageContent::where('key', 'home_hero')->first();
-        $projects = Project::latest()->take(3)->get();
-        $skills = Skill::all();
-        $posts = Post::latest()->take(3)->get();
-        return view('frontend.home', compact('content', 'projects', 'skills', 'posts'));
-    }
-
-    public function about()
-    {
-        $content = PageContent::where('key', 'about_text')->first();
-        return view('frontend.about', compact('content'));
-    }
-
-    public function skills()
-    {
-        $skills = Skill::all()->groupBy('category');
-        return view('frontend.skills', compact('skills'));
-    }
-
-    public function projects()
-    {
+        $about_content = PageContent::where('key', 'about_text')->first();
+        
         $projects = Project::latest()->get();
-        return view('frontend.projects', compact('projects'));
-    }
-
-    public function experience()
-    {
+        $skills = Skill::all()->groupBy('category');
         $experiences = Experience::latest()->get();
-        return view('frontend.experience', compact('experiences'));
-    }
+        $posts = Post::latest()->take(6)->get(); // Limit posts slightly so the page isn't endless if there are many
 
-    public function posts()
-    {
-        $posts = Post::latest()->paginate(9);
-        return view('frontend.posts', compact('posts'));
+        return view('frontend.home', compact(
+            'content', 
+            'about_content', 
+            'projects', 
+            'skills', 
+            'experiences', 
+            'posts'
+        ));
     }
 
     public function post($slug)
     {
         $post = Post::where('slug', $slug)->firstOrFail();
         return view('frontend.post', compact('post'));
-    }
-
-    public function contact()
-    {
-        return view('frontend.contact');
-    }
-
-    public function subscribeIndex()
-    {
-        return view('frontend.subscribe');
     }
 
     public function resume()

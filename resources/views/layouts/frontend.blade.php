@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" style="scroll-behavior: smooth;">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -77,20 +77,19 @@
                 {{-- Desktop menu --}}
                 <div class="hidden md:flex items-center gap-1">
                     @foreach([
-                        ['Home',       route('home')],
-                        ['About',      route('about')],
-                        ['Skills',     route('skills')],
-                        ['Projects',   route('projects')],
-                        ['Experience', route('experience')],
-                        ['Contact',    route('contact')],
+                        ['Home',       url('/#home')],
+                        ['About',      url('/#about')],
+                        ['Skills',     url('/#skills')],
+                        ['Projects',   url('/#projects')],
+                        ['Experience', url('/#experience')],
+                        ['Contact',    url('/#contact')],
                     ] as [$label, $url])
-                        <a href="{{ $url }}"
-                           class="nav-link {{ request()->url() === $url ? 'active' : '' }}">
+                        <a href="{{ $url }}" class="nav-link">
                             {{ $label }}
                         </a>
                     @endforeach
 
-                    <a href="{{ route('subscribe.index') }}" class="btn-outline ml-4 text-xs py-2 px-5 !border-cyan-500/50 !text-cyan-400 hover:!bg-cyan-500/10 hover:!border-cyan-400 font-bold transition-all">
+                    <a href="{{ url('/#subscribe') }}" class="btn-outline ml-4 text-xs py-2 px-5 !border-cyan-500/50 !text-cyan-400 hover:!bg-cyan-500/10 hover:!border-cyan-400 font-bold transition-all">
                         <svg class="w-3.5 h-3.5 mr-1 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
                         Subscribe
                     </a>
@@ -115,22 +114,19 @@
         <div id="mobile-menu" style="border-top:1px solid rgba(255,255,255,0.06); background:rgba(10,15,30,0.98);">
             <div class="px-4 py-4 space-y-1">
                 @foreach([
-                    ['Home',       route('home')],
-                    ['About',      route('about')],
-                    ['Skills',     route('skills')],
-                    ['Projects',   route('projects')],
-                    ['Experience', route('experience')],
-                    ['Contact',    route('contact')],
+                    ['Home',       url('/#home')],
+                    ['About',      url('/#about')],
+                    ['Skills',     url('/#skills')],
+                    ['Projects',   url('/#projects')],
+                    ['Experience', url('/#experience')],
+                    ['Contact',    url('/#contact')],
                 ] as [$label, $url])
                     <a href="{{ $url }}"
-                       class="block px-3 py-2.5 rounded-lg text-sm font-medium transition-colors
-                              {{ request()->url() === $url
-                                 ? 'text-white' : 'text-slate-400 hover:text-white' }}"
-                       style="{{ request()->url() === $url ? 'background:rgba(0,212,255,0.08); color:#00d4ff;' : '' }}">
+                       class="block px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-400 hover:text-white">
                         {{ $label }}
                     </a>
                 @endforeach
-                <a href="{{ route('subscribe.index') }}" class="block w-full text-center px-3 py-2.5 rounded-lg text-sm font-bold border border-cyan-500/50 text-cyan-400 transition-colors hover:bg-cyan-500/10 mb-2 mt-2">
+                <a href="{{ url('/#subscribe') }}" class="block w-full text-center px-3 py-2.5 rounded-lg text-sm font-bold border border-cyan-500/50 text-cyan-400 transition-colors hover:bg-cyan-500/10 mb-2 mt-2">
                         <svg class="w-4 h-4 mr-1 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
                         Subscribe
                 </a>
@@ -199,12 +195,12 @@
                     <h3 class="text-xs font-bold uppercase tracking-widest mb-5" style="color:#00d4ff;">Navigation</h3>
                     <ul class="space-y-3">
                         @foreach([
-                            ['Home',       route('home')],
-                            ['About',      route('about')],
-                            ['Skills',     route('skills')],
-                            ['Projects',   route('projects')],
-                            ['Experience', route('experience')],
-                            ['Contact',    route('contact')],
+                            ['Home',       url('/#home')],
+                            ['About',      url('/#about')],
+                            ['Skills',     url('/#skills')],
+                            ['Projects',   url('/#projects')],
+                            ['Experience', url('/#experience')],
+                            ['Contact',    url('/#contact')],
                         ] as [$label, $url])
                             <li>
                                 <a href="{{ $url }}" class="text-sm transition-colors hover:text-white"

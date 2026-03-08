@@ -17,14 +17,7 @@ use App\Http\Controllers\Admin\PageContentController;
 // Public Frontend Routes
 // ─────────────────────────────────────────────────────────────────────────────
 Route::get('/',          [FrontendController::class, 'home'])->name('home');
-Route::get('/about',     [FrontendController::class, 'about'])->name('about');
-Route::get('/skills',    [FrontendController::class, 'skills'])->name('skills');
-Route::get('/projects',  [FrontendController::class, 'projects'])->name('projects');
-Route::get('/experience',[FrontendController::class, 'experience'])->name('experience');
-Route::get('/posts',     [FrontendController::class, 'posts'])->name('posts');
 Route::get('/posts/{slug}', [FrontendController::class, 'post'])->name('posts.show');
-Route::get('/contact',   [FrontendController::class, 'contact'])->name('contact');
-Route::get('/subscribe', [FrontendController::class, 'subscribeIndex'])->name('subscribe.index');
 Route::get('/resume',    [FrontendController::class, 'resume'])->name('resume');
 
 // Contact form & subscription – rate-limited to prevent abuse
