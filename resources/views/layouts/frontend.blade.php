@@ -27,7 +27,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     {{-- Vite Assets --}}
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/chat.js'])
 
     @stack('head')
 
@@ -275,6 +275,9 @@
         document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
     </script>
+
+    {{-- ════════════════════════════════ FLOATING CHAT WIDGET ══ --}}
+    @include('components.chat-widget')
 
     @stack('scripts')
 </body>
