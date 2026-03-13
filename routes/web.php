@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\ChatController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\SkillController;
@@ -30,14 +29,7 @@ Route::middleware('throttle:5,1')->group(function () {
 // Email verification link for subscribers
 Route::get('/subscribe/verify/{token}', [ContactController::class, 'verify'])->name('subscribe.verify');
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Public Chat API (guest widget – no auth required, identified by session UUID)
-// ─────────────────────────────────────────────────────────────────────────────
-Route::prefix('chat')->name('chat.')->middleware('throttle:60,1')->group(function () {
-    Route::post('/start',                   [ChatController::class, 'start'])->name('start');
-    Route::post('/{sessionId}/send',        [ChatController::class, 'sendMessage'])->name('send');
-    Route::post('/{sessionId}/read',        [ChatController::class, 'markRead'])->name('read');
-});
+
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Admin Routes – protected by auth + admin middleware
@@ -52,13 +44,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('content',    PageContentController::class);
     Route::resource('messages',   \App\Http\Controllers\Admin\MessageController::class)->only(['index', 'destroy']);
 
-    // ── Chat management ──────────────────────────────────────────────────────
-    Route::prefix('chat')->name('chat.')->group(function () {
-        Route::get('/',                         [\App\Http\Controllers\Admin\ChatController::class, 'index'])->name('index');
-        Route::get('/{sessionId}',              [\App\Http\Controllers\Admin\ChatController::class, 'show'])->name('show');
-        Route::post('/{sessionId}/reply',       [\App\Http\Controllers\Admin\ChatController::class, 'reply'])->name('reply');
-        Route::post('/{sessionId}/close',       [\App\Http\Controllers\Admin\ChatController::class, 'close'])->name('close');
-    });
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
