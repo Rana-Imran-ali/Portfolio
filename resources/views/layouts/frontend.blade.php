@@ -80,7 +80,7 @@
                         ['Home',       url('/#home')],
                         ['About',      url('/#about')],
                         ['Skills',     url('/#skills')],
-                        ['Projects',   url('/#projects')],
+                        ['Projects',   route('projects.index')],
                         ['Experience', url('/#experience')],
                         ['Contact',    url('/#contact')],
                     ] as [$label, $url])
@@ -117,7 +117,7 @@
                     ['Home',       url('/#home')],
                     ['About',      url('/#about')],
                     ['Skills',     url('/#skills')],
-                    ['Projects',   url('/#projects')],
+                    ['Projects',   route('projects.index')],
                     ['Experience', url('/#experience')],
                     ['Contact',    url('/#contact')],
                 ] as [$label, $url])
@@ -198,7 +198,7 @@
                             ['Home',       url('/#home')],
                             ['About',      url('/#about')],
                             ['Skills',     url('/#skills')],
-                            ['Projects',   url('/#projects')],
+                            ['Projects',   route('projects.index')],
                             ['Experience', url('/#experience')],
                             ['Contact',    url('/#contact')],
                         ] as [$label, $url])

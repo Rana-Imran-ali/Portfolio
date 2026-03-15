@@ -49,7 +49,7 @@
 
                 {{-- CTA Buttons --}}
                 <div class="flex flex-wrap gap-4 mb-12 fade-up" style="animation-delay:0.5s;">
-                    <a href="{{ url('/#projects') }}" class="btn-primary">
+                    <a href="{{ route('projects.index') }}" class="btn-primary">
                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0l-7 7m7-7l-7-7"/></svg>
                         View My Work
                     </a>
@@ -192,71 +192,107 @@
 </section>
 
 {{-- ── SKILLS ─────────────────────────────────────────────────── --}}
-<section id="skills" class="py-24 px-4 bg-[#050b14] z-10 relative">
-    <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-16 fade-up">
-            <span class="section-label">What I Know</span>
+<section id="skills" class="py-24 px-4 bg-[#0a0f1e] z-10 relative overflow-hidden">
+    <!-- Grid decorations -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image:linear-gradient(#ffffff 1px, transparent 1px),linear-gradient(90deg,#ffffff 1px, transparent 1px);background-size:60px 60px;"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+        <div class="text-center mb-20 fade-up">
+            <span class="section-label">Technical Arsenal</span>
             <h2 class="section-title gradient-text-2 mt-2">Skills & Expertise</h2>
+            <p class="text-slate-400 mt-4 max-w-2xl mx-auto text-lg">A finely curated stack of modern technologies I use to build robust, scalable, and beautiful web applications.</p>
         </div>
 
-        @forelse($skills as $category => $skillGroup)
-            <div class="mb-16 fade-up">
-                <div class="flex items-center gap-4 mb-8">
-                    <span class="section-label" style="margin-bottom:0;">{{ $category }}</span>
-                    <div class="flex-1 h-px" style="background:rgba(255,255,255,0.06);"></div>
-                </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
 
-                <div class="grid md:grid-cols-2 gap-5">
-                    @foreach($skillGroup as $skill)
-                    <div class="glass p-6 rounded-xl card-hover">
-                        <div class="flex justify-between items-center mb-3">
-                            <span class="font-semibold text-white">{{ $skill->name }}</span>
-                            <span class="text-sm font-bold" style="color:#00d4ff;">{{ $skill->proficiency }}%</span>
-                        </div>
-                        <div class="skill-bar-track">
-                            <div class="skill-bar-fill" style="width:{{ $skill->proficiency }}%;"></div>
-                        </div>
+            {{-- Laravel --}}
+            <div class="group relative fade-up" style="animation-delay: 0.1s;">
+                <div class="absolute inset-0 rounded-2xl bg-[#FF2D20] opacity-0 group-hover:opacity-10 blur-xl transition-all duration-500"></div>
+                <div class="glass relative flex flex-col items-center justify-center p-8 rounded-2xl border border-white/5 group-hover:border-[#FF2D20]/50 group-hover:-translate-y-2 transition-all duration-300 overflow-hidden bg-gradient-to-b from-white/[0.03] to-transparent h-full">
+                    <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#FF2D20] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="w-16 h-16 mb-5 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                        <img src="https://cdn.simpleicons.org/laravel/FF2D20" alt="Laravel Logo" class="w-full h-full drop-shadow-[0_0_10px_rgba(255,45,32,0.4)]">
                     </div>
-                    @endforeach
+                    <h3 class="text-lg font-bold text-white group-hover:text-[#FF2D20] transition-colors duration-300">Laravel</h3>
                 </div>
             </div>
-        @empty
-            {{-- Fallback demo skills --}}
-            @foreach([
-                ['Backend', [['Laravel',95],['PHP 8.x',90],['MySQL',88],['REST API',85]]],
-                ['Frontend', [['JavaScript',80],['Tailwind CSS',92],['Vue.js',75],['Alpine.js',78]]],
-                ['Tools & DevOps', [['Git & GitHub',90],['Docker',70],['Linux',75],['Composer',88]]],
-            ] as [$cat,$items])
-            <div class="mb-16 fade-up">
-                <div class="flex items-center gap-4 mb-8">
-                    <span class="section-label" style="margin-bottom:0;">{{ $cat }}</span>
-                    <div class="flex-1 h-px" style="background:rgba(255,255,255,0.06);"></div>
-                </div>
-                <div class="grid md:grid-cols-2 gap-5">
-                    @foreach($items as [$name,$pct])
-                    <div class="glass p-6 rounded-xl card-hover">
-                        <div class="flex justify-between items-center mb-3">
-                            <span class="font-semibold text-white">{{ $name }}</span>
-                            <span class="text-sm font-bold" style="color:#00d4ff;">{{ $pct }}%</span>
-                        </div>
-                        <div class="skill-bar-track">
-                            <div class="skill-bar-fill" style="width:{{ $pct }}%;"></div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-            @endforeach
-        @endforelse
 
-        {{-- Tech cloud --}}
-        <div class="text-center mt-8 fade-up">
-            <div class="section-label mb-4">Also familiar with</div>
-            <div class="flex flex-wrap justify-center gap-3">
-                @foreach(['Redis','Livewire','Inertia.js','PHPUnit','GitHub Actions','Nginx','Pusher / WebSockets','Stripe API','JWT','Eloquent ORM'] as $t)
-                <span class="tech-pill">{{ $t }}</span>
-                @endforeach
+            {{-- MERN Stack --}}
+            <div class="group relative fade-up" style="animation-delay: 0.3s;">
+                <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#47A248] to-[#61DAFB] opacity-0 group-hover:opacity-10 blur-xl transition-all duration-500"></div>
+                <div class="glass relative flex flex-col items-center justify-center p-8 rounded-2xl border border-white/5 group-hover:border-[#61DAFB]/50 group-hover:-translate-y-2 transition-all duration-300 overflow-hidden bg-gradient-to-b from-white/[0.03] to-transparent h-full">
+                    <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#47A248] via-[#61DAFB] to-[#339933] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="w-16 h-16 mb-5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_10px_rgba(97,218,251,0.3)]">
+                        <svg viewBox="0 0 100 40" class="w-full h-full">
+                            <text x="50" y="30" font-family="sans-serif" font-weight="900" font-size="28" text-anchor="middle" fill="#fff">
+                                <tspan fill="#47A248">M</tspan><tspan fill="#ffffff">E</tspan><tspan fill="#61DAFB">R</tspan><tspan fill="#5FA04E">N</tspan>
+                            </text>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-white group-hover:text-[#61DAFB] transition-colors duration-300 whitespace-nowrap">MERN Stack</h3>
+                </div>
             </div>
+
+            {{-- Express.js --}}
+            <div class="group relative fade-up" style="animation-delay: 0.4s;">
+                <div class="absolute inset-0 rounded-2xl bg-[#ffffff] opacity-0 group-hover:opacity-[0.05] blur-xl transition-all duration-500"></div>
+                <div class="glass relative flex flex-col items-center justify-center p-8 rounded-2xl border border-white/5 group-hover:border-[#ffffff]/40 group-hover:-translate-y-2 transition-all duration-300 overflow-hidden bg-gradient-to-b from-white/[0.03] to-transparent h-full">
+                    <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#ffffff] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="w-16 h-16 mb-5 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
+                        <img src="https://cdn.simpleicons.org/express/ffffff" alt="Express.js Logo" class="w-full h-full drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    </div>
+                    <h3 class="text-lg font-bold text-white group-hover:text-[#ffffff] transition-colors duration-300">Express.js</h3>
+                </div>
+            </div>
+
+            {{-- WordPress --}}
+            <div class="group relative fade-up" style="animation-delay: 0.5s;">
+                <div class="absolute inset-0 rounded-2xl bg-[#21759B] opacity-0 group-hover:opacity-10 blur-xl transition-all duration-500"></div>
+                <div class="glass relative flex flex-col items-center justify-center p-8 rounded-2xl border border-white/5 group-hover:border-[#21759B]/50 group-hover:-translate-y-2 transition-all duration-300 overflow-hidden bg-gradient-to-b from-white/[0.03] to-transparent h-full">
+                    <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#21759B] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="w-16 h-16 mb-5 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                        <img src="https://cdn.simpleicons.org/wordpress/21759B" alt="WordPress Logo" class="w-full h-full drop-shadow-[0_0_10px_rgba(33,117,155,0.4)]">
+                    </div>
+                    <h3 class="text-lg font-bold text-white group-hover:text-[#21759B] transition-colors duration-300">WordPress</h3>
+                </div>
+            </div>
+
+            {{-- React --}}
+            <div class="group relative fade-up" style="animation-delay: 0.6s;">
+                <div class="absolute inset-0 rounded-2xl bg-[#61DAFB] opacity-0 group-hover:opacity-10 blur-xl transition-all duration-500"></div>
+                <div class="glass relative flex flex-col items-center justify-center p-8 rounded-2xl border border-white/5 group-hover:border-[#61DAFB]/50 group-hover:-translate-y-2 transition-all duration-300 overflow-hidden bg-gradient-to-b from-white/[0.03] to-transparent h-full">
+                    <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#61DAFB] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="w-16 h-16 mb-5 group-hover:scale-110 group-hover:rotate-[20deg] transition-transform duration-500">
+                        <img src="https://cdn.simpleicons.org/react/61DAFB" alt="React Logo" class="w-full h-full drop-shadow-[0_0_10px_rgba(97,218,251,0.4)]">
+                    </div>
+                    <h3 class="text-lg font-bold text-white group-hover:text-[#61DAFB] transition-colors duration-300">React</h3>
+                </div>
+            </div>
+
+            {{-- Bootstrap --}}
+            <div class="group relative fade-up" style="animation-delay: 0.7s;">
+                <div class="absolute inset-0 rounded-2xl bg-[#7952B3] opacity-0 group-hover:opacity-10 blur-xl transition-all duration-500"></div>
+                <div class="glass relative flex flex-col items-center justify-center p-8 rounded-2xl border border-white/5 group-hover:border-[#7952B3]/50 group-hover:-translate-y-2 transition-all duration-300 overflow-hidden bg-gradient-to-b from-white/[0.03] to-transparent h-full">
+                    <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#7952B3] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="w-16 h-16 mb-5 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
+                        <img src="https://cdn.simpleicons.org/bootstrap/7952B3" alt="Bootstrap Logo" class="w-full h-full drop-shadow-[0_0_10px_rgba(121,82,179,0.4)]">
+                    </div>
+                    <h3 class="text-lg font-bold text-white group-hover:text-[#7952B3] transition-colors duration-300">Bootstrap</h3>
+                </div>
+            </div>
+
+            {{-- Tailwind CSS --}}
+            <div class="group relative fade-up" style="animation-delay: 0.8s;">
+                <div class="absolute inset-0 rounded-2xl bg-[#06B6D4] opacity-0 group-hover:opacity-10 blur-xl transition-all duration-500"></div>
+                <div class="glass relative flex flex-col items-center justify-center p-8 rounded-2xl border border-white/5 group-hover:border-[#06B6D4]/50 group-hover:-translate-y-2 transition-all duration-300 overflow-hidden bg-gradient-to-b from-white/[0.03] to-transparent h-full">
+                    <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#06B6D4] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="w-16 h-16 mb-5 group-hover:scale-110 transition-transform duration-500">
+                        <img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" alt="Tailwind CSS Logo" class="w-full h-full drop-shadow-[0_0_10px_rgba(6,182,212,0.4)]">
+                    </div>
+                    <h3 class="text-lg font-bold text-white group-hover:text-[#06B6D4] transition-colors duration-300 whitespace-nowrap">Tailwind CSS</h3>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
@@ -312,50 +348,6 @@
         @endforelse
     </div>
 </section>
-
-{{-- ── PROJECTS ──────────────────────────────────────────────────── --}}
-@if($projects->count())
-<section id="projects" class="py-24 px-4 bg-[#050b14] z-10 relative">
-    <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-16 fade-up">
-            <span class="section-label">Portfolio</span>
-            <h2 class="section-title gradient-text-2 mt-2">Featured Projects</h2>
-        </div>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            @foreach($projects as $project)
-                <article class="glass card-hover project-card rounded-2xl overflow-hidden fade-up group">
-                    <div class="relative aspect-video overflow-hidden" style="background:#111827;">
-                        @if($project->image)
-                            <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}" loading="lazy" class="project-img w-full h-full object-cover">
-                        @else
-                            <div class="w-full h-full flex items-center justify-center relative">
-                                <div class="blob blob-cyan" style="width:200px;height:200px;top:0;left:0;opacity:0.2;"></div>
-                                <svg class="w-16 h-16 relative z-10" style="color:#1e293b;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                            </div>
-                        @endif
-                        <div class="project-overlay">
-                            @if($project->link)
-                            <a href="{{ $project->link }}" target="_blank" rel="noopener noreferrer" class="btn-primary text-xs py-2 px-4">Live Demo</a>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="p-7">
-                        <h2 class="text-xl font-bold text-white mb-2">{{ $project->title }}</h2>
-                        <p class="text-sm leading-relaxed mb-5 line-clamp-2" style="color:#64748b;">{{ $project->description }}</p>
-                        <div class="flex flex-wrap gap-2 mb-5">
-                            @foreach(array_slice(explode(',', $project->tech_stack), 0, 3) as $tech)
-                                <span class="tech-pill">{{ trim($tech) }}</span>
-                            @endforeach
-                            @if(count(explode(',', $project->tech_stack)) > 3) <span class="text-xs text-gray-500">...</span> @endif
-                        </div>
-                    </div>
-                </article>
-            @endforeach
-        </div>
-    </div>
-</section>
-@endif
 
 {{-- ── POSTS ─────────────────────────────────────────────────────── --}}
 @if($posts->count())

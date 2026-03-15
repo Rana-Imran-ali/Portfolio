@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\PageContentController;
 // Public Frontend Routes
 // ─────────────────────────────────────────────────────────────────────────────
 Route::get('/',          [FrontendController::class, 'home'])->name('home');
+Route::get('/projects',  [FrontendController::class, 'projects'])->name('projects.index');
 Route::get('/posts/{slug}', [FrontendController::class, 'post'])->name('posts.show');
 Route::get('/resume',    [FrontendController::class, 'resume'])->name('resume');
 

@@ -46,4 +46,10 @@ class FrontendController extends Controller
         }
         return response()->download($path);
     }
+
+    public function projects()
+    {
+        $projects = Project::latest()->get();
+        return view('frontend.projects', compact('projects'));
+    }
 }
