@@ -11,11 +11,11 @@
     
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-up">
         <span class="section-label mb-4 mx-auto">Portfolio</span>
-        <h1 class="text-5xl md:text-6xl font-black tracking-tight leading-[1.05] mb-6">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.05] mb-6">
             <span class="text-white">All </span>
             <span class="gradient-text">Projects</span>
         </h1>
-        <p class="text-lg leading-relaxed max-w-2xl mx-auto" style="color:#64748b;">
+        <p class="text-base sm:text-lg leading-relaxed max-w-2xl mx-auto px-4" style="color:#64748b;">
             A showcase of my recent work, highlighting full-stack applications built using modern technologies.
         </p>
     </div>
@@ -25,7 +25,7 @@
 <section class="py-24 px-4 bg-[#0a0f1e] z-10 relative" style="min-height: 50vh;">
     <div class="max-w-7xl mx-auto">
         @if($projects->count())
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 @foreach($projects as $project)
                     <article class="glass card-hover project-card rounded-2xl overflow-hidden fade-up group" style="background: rgba(15,23,42,0.6);">
                         <div class="relative aspect-video overflow-hidden" style="background:#111827;">

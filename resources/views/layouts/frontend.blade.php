@@ -51,7 +51,7 @@
             overflow: hidden;
             transition: max-height 0.35s ease;
         }
-        #mobile-menu.open { max-height: 400px; }
+        #mobile-menu.open { max-height: 500px; }
 
         /* Navbar scroll effect handled via JS */
         .navbar.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.4); }
@@ -111,7 +111,7 @@
         </div>
 
         {{-- Mobile dropdown --}}
-        <div id="mobile-menu" style="border-top:1px solid rgba(255,255,255,0.06); background:rgba(10,15,30,0.98);">
+        <div id="mobile-menu" class="md:hidden" style="border-top:1px solid rgba(255,255,255,0.06); background:rgba(10,15,30,0.98);">
             <div class="px-4 py-4 space-y-1">
                 @foreach([
                     ['Home',       url('/#home')],
@@ -163,7 +163,8 @@
     {{-- ═══════════════════════════════════════════════════ FOOTER ══ --}}
     <footer class="footer-gradient mt-24" role="contentinfo">
         <div class="max-w-7xl mx-auto px-4 py-16">
-            <div class="grid md:grid-cols-3 gap-12 mb-12">
+            <!-- Adjusted footer grid to stack nicely on mobile with appropriate spacing -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 mb-12">
 
                 {{-- Brand --}}
                 <div>
@@ -231,7 +232,8 @@
             </div>
 
             {{-- Bottom bar --}}
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-8" style="border-top:1px solid rgba(255,255,255,0.05);">
+            <!-- Improved bottom bar text alignment for mobile -->
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 text-center md:text-left" style="border-top:1px solid rgba(255,255,255,0.05);">
                 <p class="text-xs" style="color:#475569;">
                     &copy; {{ date('Y') }} Imran Developer. Crafted with ❤️ in Laravel.
                 </p>
@@ -274,9 +276,45 @@
         }, { threshold: 0.12 });
         document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
+        // Resume Download Interceptor API Integration
+        document.querySelectorAll('a[href="{{ route("resume") }}"]').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Store original content and handle states safely without using jQuery
+                const originalContent = this.innerHTML;
+                this.innerHTML = '<span class="animate-pulse" style="font-size: 0.8em;">Fetching PDF...</span>';
+                this.style.pointerEvents = 'none';
+                this.style.opacity = '0.7';
+
+                fetch("{{ route('resume.download') }}")
+                    .then(res => {
+                        if (!res.ok) throw new Error('File not found');
+                        return res.blob();
+                    })
+                    .then(blob => {
+                        const url = window.URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = 'Imran-Ali-Resume.pdf';
+                        document.body.appendChild(a);
+                        a.click();
+                        a.remove();
+                        window.URL.revokeObjectURL(url);
+                        
+                        this.innerHTML = originalContent;
+                        this.style.pointerEvents = 'auto';
+                        this.style.opacity = '1';
+                    })
+                    .catch(err => {
+                        alert('Error: CV image not found on the server. Please ensure the file is uploaded to storage.');
+                        this.innerHTML = originalContent;
+                        this.style.pointerEvents = 'auto';
+                        this.style.opacity = '1';
+                    });
+            });
+        });
+
     </script>
-
-
 
     @stack('scripts')
 </body>

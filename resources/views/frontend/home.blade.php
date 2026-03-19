@@ -32,18 +32,18 @@
                 </div>
 
                 {{-- Heading --}}
-                <h1 class="text-5xl md:text-6xl xl:text-7xl font-black tracking-tight leading-[1.05] mb-6 fade-up" style="animation-delay:0.2s;">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black tracking-tight leading-[1.05] mb-4 sm:mb-6 fade-up" style="animation-delay:0.2s;">
                     <span class="text-white">Hi, I'm </span><br>
                     <span class="gradient-text">Imran Ali</span>
                 </h1>
 
                 {{-- Typewriter subtitle --}}
-                <div class="text-xl md:text-2xl font-semibold mb-6 fade-up" style="color:#94a3b8;animation-delay:0.3s;">
+                <div class="text-lg sm:text-xl md:text-2xl font-semibold mb-6 fade-up" style="color:#94a3b8;animation-delay:0.3s;">
                     <span id="typewriter"></span><span class="cursor-blink"></span>
                 </div>
 
                 {{-- Description --}}
-                <p class="text-lg leading-relaxed max-w-xl mb-10 fade-up" style="color:#64748b;animation-delay:0.4s;">
+                <p class="text-base sm:text-lg leading-relaxed max-w-xl mb-8 sm:mb-10 fade-up" style="color:#64748b;animation-delay:0.4s;">
                     {!! $content->value ?? 'I build <strong style="color:#e2e8f0;">reliable, performant</strong> web applications using <strong style="color:#00d4ff;">Laravel & PHP</strong>. From idea to deployment — clean code, great UX.' !!}
                 </p>
 
@@ -76,7 +76,7 @@
 
             {{-- Right — Profile Picture --}}
             <div class="lg:col-span-5 fade-up flex justify-center lg:justify-end mt-16 md:mt-12 lg:mt-0 relative" style="animation-delay:0.4s;">
-                <div class="relative w-full max-w-[400px] aspect-[400/450] group mx-auto lg:mx-0">
+                <div class="relative w-full max-w-[320px] sm:max-w-[400px] aspect-[400/450] group mx-auto lg:mx-0">
                     {{-- Animated background glow --}}
                     <div class="absolute inset-0 rounded-3xl bg-gradient-to-r from-cyan-400 to-purple-500 opacity-20 blur-2xl group-hover:opacity-60 transition-opacity duration-500"></div>
                     
@@ -123,10 +123,10 @@
             <span class="section-label">Who I Am</span>
             <h2 class="section-title gradient-text-2 mt-2">About Me</h2>
         </div>
-        <div class="grid md:grid-cols-2 gap-16 items-start">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
             {{-- Text --}}
             <div class="fade-up">
-                <div class="space-y-5 text-lg leading-relaxed mb-10" style="color:#94a3b8;">
+                <div class="space-y-5 text-base sm:text-lg leading-relaxed mb-8 sm:mb-10" style="color:#94a3b8;">
                     {!! $about_content->value ?? '
                     <p>Hello! I\'m <strong style="color:#e2e8f0;">Imran Ali</strong>, a results-driven full-stack web developer based in Rawalpindi, Pakistan, with a passion for building clean, scalable web applications.</p>
                     <p>With <strong style="color:#00d4ff;">3+ years</strong> of hands-on experience, I specialise in the <strong style="color:#e2e8f0;">Laravel ecosystem</strong> — from architecting robust backends and RESTful APIs to crafting responsive, accessible frontends.</p>
@@ -136,7 +136,7 @@
                 </div>
 
                 {{-- Quick facts --}}
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     @foreach([
                         ['📍','Location','Punjab, Pakistan'],
                         ['💼','Status','Open to Work'],
@@ -155,7 +155,7 @@
             {{-- Photo / Card --}}
             <div class="fade-up" style="animation-delay:0.2s;">
                 {{-- Avatar placeholder --}}
-                <div class="glass-strong rounded-3xl overflow-hidden aspect-square flex items-center justify-center mb-6 relative" style="max-width:380px;margin:0 auto;">
+                <div class="glass-strong rounded-3xl overflow-hidden aspect-square flex items-center justify-center mb-6 relative w-full sm:max-w-[380px] mx-auto">
                     <div class="blob blob-cyan" style="width:300px;height:300px;top:0;left:0;opacity:0.3;"></div>
                     <div class="relative z-10 text-center">
                         <div class="w-28 h-28 rounded-full flex items-center justify-center mx-auto mb-4" style="background:linear-gradient(135deg,#00d4ff20,#7c3aed20);border:2px solid rgba(0,212,255,0.3);">
@@ -193,8 +193,7 @@
 
 {{-- ── SKILLS ─────────────────────────────────────────────────── --}}
 <section id="skills" class="py-24 px-4 bg-[#0a0f1e] z-10 relative overflow-hidden">
-    <!-- Grid decorations -->
-    <div class="absolute inset-0 opacity-[0.03]" style="background-image:linear-gradient(#ffffff 1px, transparent 1px),linear-gradient(90deg,#ffffff 1px, transparent 1px);background-size:60px 60px;"></div>
+    <!-- Clean Background (Grid Removed) -->
 
     <div class="max-w-7xl mx-auto relative z-10">
         <div class="text-center mb-20 fade-up">
@@ -203,7 +202,7 @@
             <p class="text-slate-400 mt-4 max-w-2xl mx-auto text-lg">A finely curated stack of modern technologies I use to build robust, scalable, and beautiful web applications.</p>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
 
             {{-- Laravel --}}
             <div class="group relative fade-up" style="animation-delay: 0.1s;">
@@ -229,7 +228,7 @@
                             </text>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-bold text-white group-hover:text-[#61DAFB] transition-colors duration-300 whitespace-nowrap">MERN Stack</h3>
+                    <h3 class="text-base sm:text-lg font-bold text-white group-hover:text-[#61DAFB] transition-colors duration-300 sm:whitespace-nowrap">MERN Stack</h3>
                 </div>
             </div>
 
@@ -289,7 +288,7 @@
                     <div class="w-16 h-16 mb-5 group-hover:scale-110 transition-transform duration-500">
                         <img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" alt="Tailwind CSS Logo" class="w-full h-full drop-shadow-[0_0_10px_rgba(6,182,212,0.4)]">
                     </div>
-                    <h3 class="text-lg font-bold text-white group-hover:text-[#06B6D4] transition-colors duration-300 whitespace-nowrap">Tailwind CSS</h3>
+                    <h3 class="text-base sm:text-lg font-bold text-white group-hover:text-[#06B6D4] transition-colors duration-300 sm:whitespace-nowrap">Tailwind CSS</h3>
                 </div>
             </div>
 
@@ -306,7 +305,7 @@
         </div>
 
         @forelse($experiences as $experience)
-            <div class="relative flex gap-6 mb-12 fade-up">
+            <div class="relative flex gap-4 sm:gap-6 mb-8 sm:mb-12 fade-up">
                 {{-- Timeline vertical --}}
                 <div class="flex flex-col items-center">
                     <div class="timeline-dot mt-2"></div>
@@ -314,7 +313,7 @@
                 </div>
 
                 {{-- Content --}}
-                <div class="glass card-hover p-7 rounded-2xl flex-1 mb-6">
+                <div class="glass card-hover p-5 sm:p-7 rounded-2xl flex-1 mb-6">
                     <time class="text-xs font-bold uppercase tracking-widest mb-2 block" style="color:#00d4ff;">
                         {{ $experience->duration }}
                     </time>
@@ -332,12 +331,12 @@
                 ['2022 – 2023','Full-Stack Developer','WebCraft Studio','Built RESTful APIs and Vue.js frontends for 3 enterprise clients. Reduced page load times by 40% through caching strategies.'],
                 ['2021 – 2022','Junior PHP Developer','TechStart PK','Developed and maintained PHP/Laravel applications. Implemented authentication, CRUD operations and reporting features.'],
             ] as [$dur,$role,$company,$desc])
-            <div class="relative flex gap-6 mb-12 fade-up">
+            <div class="relative flex gap-4 sm:gap-6 mb-8 sm:mb-12 fade-up">
                 <div class="flex flex-col items-center">
                     <div class="timeline-dot mt-2"></div>
                     <div class="timeline-line mt-3"></div>
                 </div>
-                <div class="glass card-hover p-7 rounded-2xl flex-1 mb-6">
+                <div class="glass card-hover p-5 sm:p-7 rounded-2xl flex-1 mb-6">
                     <time class="text-xs font-bold uppercase tracking-widest mb-2 block" style="color:#00d4ff;">{{ $dur }}</time>
                     <h2 class="text-xl font-black text-white mb-1">{{ $role }}</h2>
                     <p class="font-semibold mb-4" style="color:#94a3b8;">{{ $company }}</p>
@@ -357,7 +356,7 @@
             <span class="section-label">Blog</span>
             <h2 class="section-title gradient-text-2 mt-2">Latest Insights</h2>
         </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             @foreach($posts as $post)
                 <article class="glass card-hover rounded-2xl overflow-hidden fade-up flex flex-col h-full group">
                     <div class="p-7 flex-1 flex flex-col">
@@ -393,7 +392,7 @@
             <h2 class="section-title gradient-text-2 mt-2">Get In Touch</h2>
         </div>
 
-        <div class="grid lg:grid-cols-5 gap-12">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
             {{-- Contact Info + Subscribe --}}
             <div class="lg:col-span-2 fade-up">
                 {{-- Status Card --}}
@@ -475,13 +474,13 @@
 
             {{-- Contact Form --}}
             <div class="lg:col-span-3 fade-up" style="animation-delay:0.2s;">
-                <div class="glass-strong p-8 rounded-2xl">
+                <div class="glass-strong p-6 sm:p-8 rounded-2xl">
                     <h2 class="text-2xl font-black text-white mb-2">Send Me a Message</h2>
                     <p class="text-sm mb-8" style="color:#64748b;">Fill out the form below and I'll get back to you as soon as possible.</p>
 
                     <form action="{{ route('contact.submit') }}" method="POST" class="space-y-6" novalidate>
                         @csrf
-                        <div class="grid md:grid-cols-2 gap-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                             <div>
                                 <label class="block text-xs font-bold uppercase tracking-widest mb-2" style="color:#94a3b8;" for="contact-name">
                                     Full Name <span style="color:#ef4444;">*</span>
